@@ -1,1 +1,8 @@
-OPTIONS=--web.listen-address="{{ listen_address | default("") }}:{{ port | default("9342") }}"
+{% macro geenerate(obj) -%}
+  {% for entry in obj %}
+    {{ entry }}
+  {% endfor %}
+{%- endmacro %}
+
+
+OPTIONS='--web.listen-address="{{ listen_address | default("") }}:{{ port | default("9342") }}" {{ generate(data) }}'

@@ -44,7 +44,7 @@ def generate(frr_exporter):
         return None
 
     with open('/opt/vyatta-frr_exporter/config.j2', 'r') as tmpl, open(config_file, 'w') as out:
-        template = Template(tmpl.read()).render(**frr_exporter)
+        template = Template(tmpl.read()).render(data=frr_exporter)
         out.write(template)
 
     # Reload systemd manager configuration
