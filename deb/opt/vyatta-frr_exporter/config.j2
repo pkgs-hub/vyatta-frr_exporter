@@ -5,9 +5,9 @@
   {%- else -%}
     {%- if value is mapping -%}
     {{' '}}--{{ path }}{{ key }}
-    {% else %}
+    {%- else -%}
     {{' '}}--{{ path }}{{ key }}={{ value }}
-    {% endif %}
+    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 {%- endmacro -%}
