@@ -1,1 +1,2 @@
 help: frr_exporter configuration
+end: sudo sh -c "${vyshim} /opt/vyatta-frr_exporter/config.py"
