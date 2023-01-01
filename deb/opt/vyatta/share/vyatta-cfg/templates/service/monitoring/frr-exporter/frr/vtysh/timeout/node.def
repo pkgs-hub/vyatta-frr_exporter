@@ -1,0 +1,2 @@
+type: txt
+help: The timeout when running vtysh commands (default: 20s). (default: 20s)

@@ -1,0 +1,2 @@
+type: txt
+help: Add the value of the desc key from the JSON formatted BGP peer description as a label to peer metrics. (default: disabled).

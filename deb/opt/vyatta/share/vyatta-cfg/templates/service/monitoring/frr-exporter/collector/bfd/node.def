@@ -1,0 +1,2 @@
+type: txt
+help: Enable the bfd collector (default: enabled, to disable use --no-collector.bfd).

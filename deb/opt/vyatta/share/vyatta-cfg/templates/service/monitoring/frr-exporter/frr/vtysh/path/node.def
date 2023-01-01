@@ -1,0 +1,2 @@
+type: txt
+help: Path of vtysh. (default: "/usr/bin/vtysh")

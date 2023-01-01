@@ -1,0 +1,2 @@
+type: txt
+help: Path under which to expose metrics. (default: "/metrics")

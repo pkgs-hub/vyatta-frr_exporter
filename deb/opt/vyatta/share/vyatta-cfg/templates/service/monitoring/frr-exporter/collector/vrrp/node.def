@@ -1,0 +1,2 @@
+type: txt
+help: Enable the vrrp collector (default: disabled).

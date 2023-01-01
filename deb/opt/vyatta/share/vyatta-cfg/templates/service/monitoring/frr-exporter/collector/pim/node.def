@@ -1,0 +1,2 @@
+type: txt
+help: Enable the pim collector (default: disabled).

@@ -1,0 +1,2 @@
+type: txt
+help: Output format of log messages. One of: [logfmt, json] (default: logfmt)

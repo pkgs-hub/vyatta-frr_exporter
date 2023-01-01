@@ -1,0 +1,2 @@
+type: txt
+help: Timeout when connecting to the FRR daemon Unix sockets (default: 20s)

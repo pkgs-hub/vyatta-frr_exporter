@@ -1,0 +1,2 @@
+type: txt
+help: Enable the frr_bgp_peer_types_up metric (default: disabled).

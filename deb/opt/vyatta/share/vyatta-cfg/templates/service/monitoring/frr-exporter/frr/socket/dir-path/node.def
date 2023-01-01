@@ -1,0 +1,2 @@
+type: txt
+help: Path of of the localstatedir containing each daemon's Unix socket. (default: "/var/run/frr")

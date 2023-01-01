@@ -1,0 +1,2 @@
+type: txt
+help: Additional options passed to vtysh. (default: "")

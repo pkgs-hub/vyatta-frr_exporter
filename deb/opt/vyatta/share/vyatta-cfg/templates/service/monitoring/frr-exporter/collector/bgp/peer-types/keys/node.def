@@ -1,0 +1,2 @@
+type: txt
+help: ... Select the keys from the JSON formatted BGP peer description of which the values will be used with the frr_bgp_peer_types_up metric. Supports multiple values (default: type). (default: type)

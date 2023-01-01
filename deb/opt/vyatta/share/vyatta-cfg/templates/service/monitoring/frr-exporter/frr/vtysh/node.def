@@ -1,0 +1,2 @@
+type: txt
+help: Use vtysh to query FRR instead of each daemon's Unix socket (default: disabled, recommended: disabled).
