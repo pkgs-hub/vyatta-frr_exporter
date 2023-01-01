@@ -1,15 +1,11 @@
 {% macro generate(obj, path="") -%}
 {%- for key, value in obj.items() -%}
-  {#- due to splitted port / listen-address this will be handled separately -#}
-  {%- if key is not in ["port", "listen-address"] %}
-    {%- if value is mapping -%}
-      {{ generate(value, path + key + ".") }}
-    {%- else -%}
-     {{' '}}--{{ path }}{{ key }}={{ value }}
-    {%- endif -%}
+  {%- if value is mapping -%}
+    {{ generate(value, path + key + ".") }}
+  {%- else -%}
+    {{' '}}--{{ path }}{{ key }}={{ value }}
   {%- endif -%}
 {%- endfor -%}
-{%- endmacro %}
+{%- endmacro -%}
 
-
-OPTIONS='--web.listen-address="{{ data["web"]["listen_address"] | default("") }}:{{ data["web"]["port"] | default("9342") }}"{{ generate(data) }}'
+OPTIONS='{{ generate(data) }}'
