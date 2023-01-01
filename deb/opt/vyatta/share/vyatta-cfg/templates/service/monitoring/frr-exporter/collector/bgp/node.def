@@ -1,2 +1,1 @@
-type: txt
 help: Enable the bgp collector (default: enabled, to disable use --no-collector.bgp).
