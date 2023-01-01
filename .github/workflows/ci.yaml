@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+env:
+  VERSION: 1.1.4
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download bin
+        run: |
+          url="https://github.com/tynany/frr_exporter/releases/download/v${{ env.VERSION }}/frr_exporter-${{ env.VERSION }}.linux-amd64.tar.gz"
+          wget -O- ${url} | tar xz --strip-components=1 -C ./deb/opt/vyatta-frr_exporter
+
+      - name: Build deb
+        run: |
+          chmod +x deb/DEBIAN/postinst
+          dpkg-deb --build --root-owner-group deb
+
+      - name: Rename deb
+        run: mv deb.deb vyatta-frr-exporter_$(dpkg-deb -f deb.deb Version)_$(dpkg-deb -f deb.deb Architecture).deb
+
+      - name: Upload deb
+        uses: actions/upload-artifact@v3
+        with:
+          name: debian-vyatta-frr-exporter
+          path: "vyatta-frr-exporter_*.deb"
+
+      - uses: alexellis/upload-assets@0.4.0
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          asset_paths: '["vyatta-frr-exporter_*.deb"]'

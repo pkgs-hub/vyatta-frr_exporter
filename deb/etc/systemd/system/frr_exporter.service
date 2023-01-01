@@ -1,0 +1,9 @@
+[Unit]
+Description=Free Range Routing Exporter
+
+[Service]
+EnvironmentFile=/etc/default/frr_exporter
+ExecStart=/opt/vyatta-frr_exporter/frr_exporter $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

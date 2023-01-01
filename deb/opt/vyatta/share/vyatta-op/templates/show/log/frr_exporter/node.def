@@ -1,0 +1,2 @@
+help: Show frr_exporter logs
+run: journalctl -u frr_exporter | less

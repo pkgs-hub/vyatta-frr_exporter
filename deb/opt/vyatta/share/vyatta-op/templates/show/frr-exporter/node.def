@@ -1,0 +1,2 @@
+help: Show frr_exporter status
+run: systemctl status frr_exporter

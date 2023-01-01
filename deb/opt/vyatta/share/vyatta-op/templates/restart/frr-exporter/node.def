@@ -1,0 +1,2 @@
+help: Restart frr_exporter
+run: sudo systemctl restart frr_exporter

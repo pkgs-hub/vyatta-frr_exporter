@@ -1,0 +1,2 @@
+chmod +x /opt/vyatta-frr_exporter/config.py
+systemctl daemon-reload
