@@ -21,10 +21,13 @@ jobs:
           url="https://github.com/tynany/frr_exporter/releases/download/v${{ env.VERSION }}/frr_exporter-${{ env.VERSION }}.linux-amd64.tar.gz"
           wget -O- ${url} | tar xz --strip-components=1 -C ./deb/opt/vyatta-frr_exporter
 
+      - name: Adjust version number for release
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          sed -i "s|Version:.*|Version: $(echo ${GITHUB_REF#refs/*v}|" ./deb/DEBIAN/control
+
       - name: Build deb
         run: |
-          # adjust version in deb/CONTROL
-          sed -i "s|Version:.*|Version: ${VERSION}|" ./deb/DEBIAN/control
           chmod +x deb/DEBIAN/postinst
           dpkg-deb --build --root-owner-group deb
 
