@@ -23,6 +23,8 @@ jobs:
 
       - name: Build deb
         run: |
+          # adjust version in deb/CONTROL
+          sed -i "s|Version:.*|Version: ${VERSION}|" ./deb/CONTROL
           chmod +x deb/DEBIAN/postinst
           dpkg-deb --build --root-owner-group deb
 
