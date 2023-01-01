@@ -1,9 +1,13 @@
 {% macro generate(obj, path="") -%}
 {%- for key, value in obj.items() -%}
-  {%- if value is mapping -%}
+  {%- if value is mapping and value|length > 0 -%}
     {{ generate(value, path + key + ".") }}
   {%- else -%}
+    {%- if value is mapping -%}
+    {{' '}}--{{ path }}{{ key }}
+    {% else %}
     {{' '}}--{{ path }}{{ key }}={{ value }}
+    {% endif %}
   {%- endif -%}
 {%- endfor -%}
 {%- endmacro -%}
