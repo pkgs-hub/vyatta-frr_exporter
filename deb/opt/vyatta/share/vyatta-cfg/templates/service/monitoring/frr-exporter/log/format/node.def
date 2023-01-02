@@ -1,2 +1,6 @@
 type: txt
 help: Output format of log messages. One of: [logfmt, json] (default: logfmt)
+val_help: logfmt; Prometheus logging format (default)
+val_help: json; JSON
+allowed: echo "logfmt json"
+syntax:expression: exec "${vyos_libexec_dir}/validate-value --regex \'^(logfmt|json)$\' --value \'$VAR(@)\'"; "Invalid value"

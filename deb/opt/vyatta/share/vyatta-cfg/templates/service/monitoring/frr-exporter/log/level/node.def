@@ -1,2 +1,8 @@
 type: txt
 help: Only log messages with the given severity or above. One of: [debug, info, warn, error] (default: info)
+val_help: debug; Debug
+val_help: info; Info (default)
+val_help: warn; Warning
+val_help: error; Error
+allowed: echo "debug info warn error"
+syntax:expression: exec "${vyos_libexec_dir}/validate-value --regex \'^(debug|info|warn|error)$\' --value \'$VAR(@)\'"; "Invalid value"
