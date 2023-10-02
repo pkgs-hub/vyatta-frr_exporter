@@ -50,6 +50,9 @@ def generate(frr_exporter):
         port = frr_exporter['web']['listen-address'][address].get("port", 9342)
         frr_exporter['web']['listen-address'] = f"{address}:{port}"
 
+    # remove empty elements
+    frr_exporter = {key: value for key, value in frr_exporter.items() if value}
+
     with open('/opt/vyatta-frr_exporter/config.j2', 'r') as tmpl, open(config_file, 'w') as out:
         template = Template(tmpl.read()).render(data=frr_exporter)
         out.write(template)
